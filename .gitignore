@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual Environments
+env/
+venv/
+.venv/
+
+# IDEs & Editors
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Models / Hugging Face
+*.bin
+*.pt
+*.pth
+*.h5
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Streamlit cache
+.streamlit/
+
+# Other
+*.egg-info/
