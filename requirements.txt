@@ -1,4 +1,5 @@
-fastapi
-uvicorn
+streamlit
+plotly
+requests
 transformers
 torch
