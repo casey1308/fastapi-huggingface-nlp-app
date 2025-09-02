@@ -2,9 +2,6 @@ import streamlit as st
 import requests
 import plotly.express as px
 
-# ----------------------
-# App Config & Styling
-# ----------------------
 st.set_page_config(page_title="Text Summarizer & Sentiment Analyzer", page_icon="🧠", layout="centered")
 
 st.markdown("""
@@ -22,47 +19,25 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ----------------------
-# Backend URL
-# ----------------------
 API_URL = "https://huggingface-api.onrender.com"
 
-
-# ----------------------
-# App Title
-# ----------------------
 st.title("Text Summarizer & Sentiment Analyzer")
 
-# ----------------------
-# Task Selector
-# ----------------------
 task = st.selectbox("Select Task", ["Summarization", "Sentiment"])
 
-# ----------------------
-# Example Texts
-# ----------------------
 examples = {
     "Summarization": "NASA's Artemis program aims to land the first woman and next man on the Moon by 2024, paving the way for sustainable lunar exploration and missions to Mars.",
     "Sentiment": "I absolutely love the new features of this product. It's intuitive and powerful!"
 }
 
-# ----------------------
-# Load Example Text Button (Using session_state)
-# ----------------------
 if "text_input" not in st.session_state:
     st.session_state.text_input = ""
 
 if st.button("🧪 Load Example Text"):
     st.session_state.text_input = examples[task]
 
-# ----------------------
-# Text Input Area
-# ----------------------
 text_input = st.text_area("Enter your text", value=st.session_state.text_input, height=200)
 
-# ----------------------
-# Analyze Button Logic
-# ----------------------
 if st.button("🔍 Analyze"):
     if not text_input.strip():
         st.warning("⚠️ Please enter some text.")
@@ -88,7 +63,6 @@ if st.button("🔍 Analyze"):
                     st.write("Confidence Scores:")
                     st.json(scores)
 
-                    # 📊 Plotly Chart
                     fig = px.bar(
                         x=list(scores.keys()),
                         y=list(scores.values()),
