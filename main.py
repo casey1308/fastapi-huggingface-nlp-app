@@ -8,18 +8,19 @@ app = FastAPI(
     title="Hugging Face NLP API",
     description="A FastAPI backend that summarizes text and analyzes sentiment using Hugging Face transformers.",
     version="1.1"
+    
 )
 
-# Load summarization pipeline
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
-# Load improved sentiment model
+
 sentiment_model_name = "cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(sentiment_model_name)
 model = AutoModelForSequenceClassification.from_pretrained(sentiment_model_name)
 labels = ['Negative', 'Neutral', 'Positive']
 
-# Add example to make Swagger's "Load example" button work
+
+
 class TextInput(BaseModel):
     text: str
 
